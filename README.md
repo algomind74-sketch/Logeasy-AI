@@ -98,6 +98,14 @@ LogEasy/
 - [ ] Deploy on AWS EC2 or Render  
 
 ---
+## 🧑‍💻 Team Members
+
+| Name            | Role                                |
+|-----------------|-------------------------------------|
+| Chanchal        | Team Lead & AI/Backend Developer    |
+| Tushar          | Frontend Developer (React.js)       |
+| Sourav Yadav    | Database & API Integration          |
+| Rajnikant       | Data Visualization & Reporting      |
 
 ## 🧑‍💻 **Contributing**
 
