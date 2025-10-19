@@ -1,0 +1,121 @@
+LogEasy/
+│
+├── backend/                                      # ⚙️ Backend (FastAPI + AI + DB)
+│   │
+│   ├── app/                                      # Main backend app package
+│   │   │
+│   │   ├── api/                                  # API layer (FastAPI routes)
+│   │   │   ├── routes/
+│   │   │   │   ├── logs.py                       # Endpoints: upload logs, fetch logs
+│   │   │   │   ├── insights.py                   # Endpoints: AI insights, predictions
+│   │   │   │   ├── reports.py                    # Endpoints: generate and download reports
+│   │   │   │   └── auth.py                       # (Optional) Auth routes for users/admins
+│   │   │   └── __init__.py
+│   │   │
+│   │   ├── core/                                 # Core utilities & helper modules
+│   │   │   ├── config.py                         # Environment configs, constants
+│   │   │   ├── logging_config.py                 # Backend logging setup
+│   │   │   ├── constants.py                      # Static global variables
+│   │   │   └── utils.py                          # Shared helper functions
+│   │   │
+│   │   ├── services/                             # Business logic layer (non-ML)
+│   │   │   ├── fetcher.py                        # Fetch logs from APIs or uploaded files
+│   │   │   ├── analyzer.py                       # Basic analytics (counts, errors, stats)
+│   │   │   ├── pdf_report.py                     # Generate reports (PDF/DOCX)
+│   │   │   ├── compliance.py                     # Generate RBI-ready compliance reports
+│   │   │   └── realtime.py                       # Real-time dashboard / WebSocket support
+│   │   │
+│   │   ├── ml_engine/                            # AI/ML modules (core intelligence)
+│   │   │   ├── preprocess.py                     # Clean and prepare log data for ML
+│   │   │   ├── classifier.py                     # NLP log classifier (Error, Warning, Info, etc.)
+│   │   │   ├── anomaly_detector.py               # Detect spikes or unusual patterns (IsolationForest)
+│   │   │   ├── clustering.py                     # Group similar errors (DBSCAN, embeddings)
+│   │   │   ├── predictor.py                      # Predict future failures or instability
+│   │   │   └── model_utils.py                    # Save/load trained ML models
+│   │   │
+│   │   ├── database/                             # Database layer
+│   │   │   ├── models.py                         # SQLAlchemy ORM models (Log, Insight, Report)
+│   │   │   ├── crud.py                           # CRUD operations (create, read, update, delete)
+│   │   │   ├── db_session.py                     # DB session handling / connection setup
+│   │   │   └── seed_data.py                      # Optional: populate DB with test data
+│   │   │
+│   │   ├── tests/                                # Automated tests
+│   │   │   ├── test_api.py                       # Test all API endpoints
+│   │   │   ├── test_ai_engine.py                 # Validate AI/ML logic
+│   │   │   └── test_reports.py                   # Verify PDF/DOCX generation
+│   │   │
+│   │   ├── main.py                               # 🚀 FastAPI entry point (starts the app)
+│   │   └── __init__.py
+│   │
+│   ├── requirements.txt                          # Python dependencies
+│   ├── Dockerfile                                # Container config for backend
+│   └── README.md                                 # Backend-specific documentation
+│
+│
+├── frontend/                                     # 🎨 React.js frontend (dashboard)
+│   ├── src/
+│   │   ├── components/                           # UI components
+│   │   │   ├── Dashboard/
+│   │   │   │   ├── LogsTable.jsx                 # Table to view and filter logs
+│   │   │   │   ├── AnalyticsGraph.jsx            # Graphs: error rate, trends
+│   │   │   │   ├── RealtimeStatus.jsx            # Real-time system health indicators
+│   │   │   │   └── AIInsights.jsx                # Section for AI-detected insights
+│   │   │   ├── Navbar.jsx                        # Top navigation bar
+│   │   │   ├── Sidebar.jsx                       # Sidebar for navigation
+│   │   │   └── ReportViewer.jsx                  # View generated reports
+│   │   │
+│   │   ├── pages/                                # Page-level React components
+│   │   │   ├── Home.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Reports.jsx
+│   │   │   └── Compliance.jsx
+│   │   │
+│   │   ├── services/                             # Frontend API and socket services
+│   │   │   ├── api.js                            # Axios setup + API calls to FastAPI
+│   │   │   └── websocket.js                      # Handle live WebSocket connections
+│   │   │
+│   │   ├── utils/                                # Helper functions for frontend
+│   │   │   └── formatters.js                     # Date, time, and log formatting
+│   │   │
+│   │   ├── App.jsx                               # Main React component
+│   │   ├── index.js                              # ReactDOM entry point
+│   │   └── styles/                               # CSS or Tailwind styling
+│   │       ├── global.css
+│   │       └── dashboard.css
+│   │
+│   ├── package.json                              # Frontend dependencies
+│   └── README.md                                 # Frontend-specific documentation
+│
+│
+├── data/                                         # 📂 Data files (logs, reports, etc.)
+│   ├── sample_logs/
+│   │   ├── payments.log                          # Example fintech log file
+│   │   ├── auth_service.log
+│   │   └── network.log
+│   ├── processed/                                # Processed/cleaned logs
+│   └── reports/                                  # Generated reports (PDF/DOCX)
+│       ├── report_2025_10_18.pdf
+│       └── monthly_audit.docx
+│
+│
+├── models/                                       # 🤖 AI model artifacts
+│   ├── trained/                                  # Saved ML models (joblib / pickle)
+│   │   ├── log_classifier.pkl
+│   │   ├── anomaly_model.pkl
+│   │   └── vectorizer.pkl
+│   └── notebooks/                                # Jupyter notebooks for research & training
+│       ├── eda.ipynb                             # Exploratory data analysis
+│       ├── clustering_test.ipynb                 # Prototype clustering model
+│       └── anomaly_detection.ipynb               # Prototype anomaly detection
+│
+│
+├── scripts/                                      # 🧰 Utility scripts
+│   ├── setup_db.py                               # Initialize database tables
+│   ├── train_models.py                           # Train & export ML models
+│   ├── simulate_logs.py                          # Generate fake fintech logs
+│   └── generate_reports.py                       # Script to auto-generate reports
+│
+│
+├── .env.example                                  # Example environment variables
+├── docker-compose.yml                            # Combine backend + frontend + DB containers
+└── README.md                                     # 📘 Main project documentation
